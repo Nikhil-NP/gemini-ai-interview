@@ -1,0 +1,11 @@
+google-generativeai
+SpeechRecognition
+gTTS
+pydub
+simpleaudio
+typer
+rich
+python-dotenv
+pyaudio
+playsound==1.2.2
+questionary
