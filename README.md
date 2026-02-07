@@ -43,6 +43,7 @@ python -m venv venv
 .\venv\Scripts\activate
 ```
 
+
 **Install Python Dependencies**:
 ```bash
 pip install -r requirements.txt

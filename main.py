@@ -24,9 +24,7 @@ def start(
     duration: Optional[int] = typer.Option(None, help="Duration in minutes"),
     text_only: bool = typer.Option(False, help="Disable voice mode (text only)")
 ):
-    """
-    Start the AI Mock Interview.
-    """
+   
     # Interactive Mode if args are missing
     if interview_type is None:
         import questionary
