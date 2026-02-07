@@ -63,7 +63,14 @@ def start(
 
     console.print("[bold]Interview Started. Press Ctrl+C to stop.[/bold]\n")
 
-    greeting = "Hello! I'm your interviewer today. Are you ready to begin the case study?"
+    greetings = {
+        "Behavioral": "Hello! I'm your interviewer today. Are you ready to begin the behavioral interview?",
+        "Engineering": "Hello! I'm your interviewer today. Are you ready for the technical coding interview?",
+        "System Design": "Hello! I'm your interviewer today. Are you ready to design some systems?",
+        "Strategy": "Hello! I'm your interviewer today. Are you ready to dive into some product strategy?",
+        "default": "Hello! I'm your interviewer today. Are you ready to begin the case study?"
+    }
+    greeting = greetings.get(interview_type, greetings["default"])
     console.print(f"[bold blue]AI:[/bold blue] {greeting}")
     
     if audio_manager:
@@ -124,8 +131,16 @@ def start(
     grader = Grader(api_key)
     result = grader.grade_interview(transcript_str, interview_type)
     
+    # Save Feedback
+    timestamp = time.strftime("%Y%m%d-%H%M%S")
+    os.makedirs("feedback", exist_ok=True)
+    feedback_file = f"feedback/{interview_type.replace(' ', '_')}_{timestamp}.md"
+    with open(feedback_file, "w") as f:
+        f.write(result)
+
     console.print(Panel(Markdown(result), title="Interview Feedback"))
     console.print(f"Transcript saved to: {save_path}")
+    console.print(f"Feedback saved to: {feedback_file}")
 
 if __name__ == "__main__":
     app()

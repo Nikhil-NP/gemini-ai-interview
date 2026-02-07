@@ -19,6 +19,8 @@ class AudioManager:
         with self.microphone as source:
             console.print("[dim]Calibrating microphone...[/dim]")
             self.recognizer.adjust_for_ambient_noise(source, duration=1)
+            self.recognizer.pause_threshold = 2.0 # Wait 2 seconds of silence before processing
+            self.recognizer.non_speaking_duration = 1.5
 
     def speak(self, text: str):
         """Converts text to speech and plays it."""
@@ -51,7 +53,8 @@ class AudioManager:
         with self.microphone as source:
             console.print("[green]Listening...[/green]")
             try:
-                audio = self.recognizer.listen(source, timeout=10, phrase_time_limit=15)
+                # Increased timeout and phrase_time_limit for more natural pauses
+                audio = self.recognizer.listen(source, timeout=10, phrase_time_limit=30)
                 console.print("[dim]Processing...[/dim]")
                 text = self.recognizer.recognize_google(audio)
                 console.print(f"[cyan]You said: {text}[/cyan]")

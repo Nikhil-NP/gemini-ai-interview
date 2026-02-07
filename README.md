@@ -3,9 +3,10 @@
 A  CLI-based AI Mock Interview Platform for AI Mock Interview . Integrated with Google Gemini for AI logic, gTTS for voice output, and SpeechRecognition for voice input.
 
 ## Features
-- **AI Interviewer**: Simulates a real PM interviewer using Gemini 1.5 Flash.
+- **AI Interviewer**: Simulates a real interviewer using Gemini 1.5 Flash.
 - **Voice Interaction**: Talk to the AI and hear it speak back.
 - **Grading**: Automtaic feedback and scoring after the interview.
+- **Feedback Storage**: Detailed feedback is saved to `feedback/` folder.
 - **Transcripts**: Saves full interview logs for review.
 
 ## 🛠️ Installation & Setup
