@@ -1,7 +1,7 @@
 import os
 import warnings
 import google.generativeai as genai
-from rich.console import Console
+from rich.console import Console 
 
 # Suppress the Warning from google.generativeai
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -14,7 +14,6 @@ class Interviewer:
             raise ValueError("API Key is required")
         
         genai.configure(api_key=api_key)
-        # Using the latest stable model to avoid rate limits
         self.model = genai.GenerativeModel('gemini-flash-latest')
         self.history = []
         self.interview_type = interview_type
